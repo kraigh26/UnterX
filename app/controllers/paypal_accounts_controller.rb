@@ -30,7 +30,7 @@ class PaypalAccountsController < ApplicationController
     render(locals: {
       community_ready_for_payments: community_ready_for_payments,
       left_hand_navigation_links: settings_links_for(@current_user, @current_community),
-      paypal_account_email: m_account[:email].or_else(""),
+      paypal_account_email: m_account[:email].or_else(m_account[:payer_id].or_else("")),
       paypal_account_state: m_account[:state].or_else(:not_connected),
       change_url: ask_order_permission_person_paypal_account_path(@current_user)
     })
@@ -240,9 +240,9 @@ class PaypalAccountsController < ApplicationController
     error_msg =
       if (error_msg)
         error_msg
-      elsif (error_response && error_response[:error_code] == "570058")
+      elsif (error_response && error_response.to_h[:error_code] == "570058")
         t("paypal_accounts.new.account_not_verified")
-      elsif (error_response && error_response[:error_code] == "520009")
+      elsif (error_response && error_response.to_h[:error_code] == "520009")
         t("paypal_accounts.new.account_restricted")
       else
         t("paypal_accounts.new.something_went_wrong")
