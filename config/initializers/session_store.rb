@@ -8,6 +8,7 @@ else
 end
 
 session_key = APP_CONFIG.session_key || '_kassi_session'
+session_key = "_sharetribe_session_newnewnew4"
 
 Rails.application.config.session_store :active_record_store, :key => session_key, :domain => domain, :expire_after => 1.years
 
