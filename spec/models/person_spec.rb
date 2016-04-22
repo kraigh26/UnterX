@@ -12,7 +12,7 @@
 #  active_days_count                  :integer          default(0)
 #  last_page_load_date                :datetime
 #  test_group_number                  :integer          default(1)
-#  username                           :string(255)
+#  username                           :string(255)      not null
 #  email                              :string(255)
 #  encrypted_password                 :string(255)      default(""), not null
 #  legacy_encrypted_password          :string(255)

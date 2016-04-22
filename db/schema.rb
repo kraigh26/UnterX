@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420200110) do
+ActiveRecord::Schema.define(version: 20160422074608) do
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "token",            limit: 255
@@ -875,7 +875,7 @@ ActiveRecord::Schema.define(version: 20160420200110) do
     t.integer  "active_days_count",                  limit: 4,     default: 0
     t.datetime "last_page_load_date"
     t.integer  "test_group_number",                  limit: 4,     default: 1
-    t.string   "username",                           limit: 255
+    t.string   "username",                           limit: 255,                   null: false
     t.string   "email",                              limit: 255
     t.string   "encrypted_password",                 limit: 255,   default: "",    null: false
     t.string   "legacy_encrypted_password",          limit: 255
