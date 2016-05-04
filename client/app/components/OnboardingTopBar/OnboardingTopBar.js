@@ -36,8 +36,10 @@ class OnboardingTopBar extends Component {
       div({ className: css.topbarContainer }, [
         div({ className: css.topbar }, [
           div({ className: css.progressLabel }, [
-            t('progress_label'),
-            span({ className: css.progressLabelPercentage }, `${Math.floor(currentProgress)} %`),
+            a({ href: this.props.guide_root }, [
+              t('progress_label'),
+              span({ className: css.progressLabelPercentage }, `${Math.floor(currentProgress)} %`),
+            ]),
           ]),
           div({ className: css.progressBarBackground }, [
             div({ className: css.progressBar, style: { width: `${currentProgress}%` } }),
