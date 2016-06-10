@@ -121,4 +121,10 @@
 
 <% end # sections.each %>
 
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+<script>
+  var autocomplete = new window.google.maps.places.Autocomplete(document.getElementById('q'), { bounds: { north: -90, east: -180, south: 90, west: 180 } });
+  autocomplete.setTypes(['geocode']);
+</script>
+
 </html>

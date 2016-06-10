@@ -168,7 +168,7 @@ class LandingPageController < ActionController::Metal
         { "section" => {"type" => "sections", "id" => "private_hero"},
           "disabled" => false},
         { "section" => {"type" => "sections", "id" => "myhero1"},
-          "disabled" => true},
+          "disabled" => false},
         { "section" => {"type" => "sections", "id" => "myhero1"},
           "disabled" => true},
       ],
