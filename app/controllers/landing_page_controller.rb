@@ -47,7 +47,8 @@ class LandingPageController < ActionController::Metal
           community_id: cid,
           default_locale: default_locale,
           locale_param: locale_param,
-          version: version
+          version: version,
+          request: request
         )
         cache_meta = build_cache_meta(content)
 
@@ -70,7 +71,8 @@ class LandingPageController < ActionController::Metal
             community_id: cid,
             default_locale: default_locale,
             locale_param: locale_param,
-            version: version
+            version: version,
+            request: request
           )
         end
 
@@ -108,7 +110,8 @@ class LandingPageController < ActionController::Metal
       self.response_body = render_landing_page(
         default_locale: default_locale,
         locale_param: locale_param,
-        structure: structure
+        structure: structure,
+        request: request
       )
     rescue CLP::LandingPageContentNotFound
       render_not_found()
@@ -122,12 +125,13 @@ class LandingPageController < ActionController::Metal
     I18nHelper.initialize_community_backend!(cid, [locale])
   end
 
-  def build_html(community_id:, default_locale:, locale_param:, version:)
+  def build_html(community_id:, default_locale:, locale_param:, version:, request:)
     structure = CLP::LandingPageStore.load_structure(community_id, version)
     render_landing_page(
       default_locale: default_locale,
       structure: structure,
-      locale_param: locale_param
+      locale_param: locale_param,
+      request: request
     )
   end
 
@@ -151,7 +155,7 @@ class LandingPageController < ActionController::Metal
     Rails.cache.write("clp/#{community_id}/#{version}/#{digest}", content, expires_in: cache_time)
   end
 
-  def build_denormalizer(cid:, default_locale:, locale_param:, sitename:)
+  def build_denormalizer(cid:, default_locale:, locale_param:, sitename:, request:)
     search_path = ->(opts = {}) {
       PathHelpers.search_path(
         community_id: cid,
@@ -187,7 +191,8 @@ class LandingPageController < ActionController::Metal
         "assets" => CLP::LinkResolver::AssetResolver.new(APP_CONFIG[:clp_asset_host], sitename),
         "translation" => CLP::LinkResolver::TranslationResolver.new(locale),
         "category" => CLP::LinkResolver::CategoryResolver.new(category_data),
-        "listing" => CLP::LinkResolver::ListingResolver.new(cid, locale, name_display_type)
+        "listing" => CLP::LinkResolver::ListingResolver.new(cid, locale, name_display_type),
+        "request" => CLP::LinkResolver::RequestResolver.new(request)
       }
     )
   end
@@ -213,7 +218,7 @@ class LandingPageController < ActionController::Metal
       apple_touch_icon: c.logo.url(:apple_touch) }
   end
 
-  def render_landing_page(default_locale:, locale_param:, structure:)
+  def render_landing_page(default_locale:, locale_param:, structure:, request:)
     c = community(request)
 
     landing_page_locale, sitename = structure["settings"].values_at("locale", "sitename")
@@ -235,7 +240,8 @@ class LandingPageController < ActionController::Metal
       cid: c&.id,
       locale_param: locale_param,
       default_locale: default_locale,
-      sitename: sitename
+      sitename: sitename,
+      request: request
     )
 
     render_to_string :landing_page,
@@ -380,7 +386,8 @@ class LandingPageController < ActionController::Metal
       "youtube_video_id": "UffchBUUIoI",
       "width": "1280",
       "height": "720",
-      "text": "Watch the cool video!"
+      "text": "Watch the cool video!",
+      "origin": {"type": "request", "id": "host_with_port_and_protocol"}
     },
     {
       "id": "categories7",

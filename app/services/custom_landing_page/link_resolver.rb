@@ -122,5 +122,23 @@ module CustomLandingPage
       end
 
     end
+
+    class RequestResolver
+      def initialize(request)
+        @_request = request
+      end
+
+      def call(type, id, _)
+        data =
+          case id
+          when "host_with_port_and_protocol"
+            { "value" => "#{@_request.protocol}#{@_request.host_with_port}"}
+          else
+            raise LinkResolvingError.new("Unknown request id '#{id}'.")
+          end
+
+        data.merge("id" => id, "type" => type)
+      end
+    end
   end
 end
