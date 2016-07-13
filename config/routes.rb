@@ -10,6 +10,8 @@ Kassi::Application.routes.draw do
   # first created -> highest priority.
 
   get "/robots.txt" => RobotsGenerator
+  get "/sitemap.xml.gz" => "sitemap#sitemap", format: :xml
+  get "/sitemap/generate" => "sitemap#generate", format: :xml
 
   # A route for DV test file
   # A CA will check if there is a file in this route
