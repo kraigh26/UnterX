@@ -26,11 +26,14 @@ class SitemapController < ApplicationController
             default_host = "https://"+APP_CONFIG.domain
           end
 
+          community_id = @current_community.id
+
           SitemapGenerator::Sitemap.create(
                 :default_host => default_host,
+                :verbose => false,
                 :adapter => adapter) do
-            Listing.where(deleted: false, open: true, community_id: 1).find_each do |listing|
-              add listing_path(listing), :lastmod => listing.updated_at
+                  Listing.where(deleted: false, open: true, community_id: community_id).find_each do |listing|
+                    add listing_path(id: listing.id), :lastmod => listing.updated_at
             end
           end
 
