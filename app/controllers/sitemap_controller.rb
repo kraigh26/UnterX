@@ -20,9 +20,9 @@ class SitemapController < ApplicationController
         data = Rails.cache.fetch(@current_community, expires_in: 24.hours) do
           adapter = SitemapGenerator::NeverWriteAdapter.new
 
-          if @current_community.use_domain 
+          if @current_community.use_domain
             default_host = "https://"+@current_community.domain
-          else 
+          else
             default_host = "https://"+APP_CONFIG.domain
           end
 
@@ -32,7 +32,7 @@ class SitemapController < ApplicationController
                 :default_host => default_host,
                 :verbose => false,
                 :adapter => adapter) do
-                  Listing.where(deleted: false, open: true, community_id: community_id).find_each do |listing|
+                  Listing.currently_open.where(community_id: community_id).find_each do |listing|
                     add listing_path(id: listing.id), :lastmod => listing.updated_at
             end
           end
