@@ -39,7 +39,7 @@ Then /^(?:|I )should not see selector "([^"]*)"?$/ do |selector|
     with_scope(selector) do
       # nothing to do here, just try to search the selector and should fail on that
     end
-  }.should raise_error(Capybara::ElementNotFound)
+  }.should raise_error(RSpec::Expectations::ExpectationNotMetError)
 end
 
 When /^(?:|I )attach a listing image "([^"]*)"$/ do |file|
