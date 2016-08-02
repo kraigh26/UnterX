@@ -154,6 +154,7 @@ end
 
 group :test do
   gem 'capybara', '~> 2.6.2'
+  gem 'poltergeist'
   gem "rspec-rails", "~>3.0"
 
   gem 'cucumber-rails', '~> 1.4.0', require: false # require: false is needed for cucumber-rails

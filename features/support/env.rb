@@ -13,6 +13,7 @@ require 'rspec/expectations'
 
 require 'cucumber/rails'
 require 'email_spec/cucumber'
+require 'capybara/poltergeist'
 
 # Uncomment this if needed to keep the browser open after the test
 # Capybara::Selenium::Driver.class_eval do
