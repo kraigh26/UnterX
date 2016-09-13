@@ -304,7 +304,6 @@ class ApplicationController < ActionController::Base
     }
 
     configs = {
-      always_use_ssl: Maybe(APP_CONFIG).always_use_ssl.map { |v| v == true || v.to_s.downcase == "true" }.or_else(false), # value can be string if it comes from ENV
       app_domain: URLUtils.strip_port_from_host(APP_CONFIG.domain),
     }
 
@@ -319,7 +318,7 @@ class ApplicationController < ActionController::Base
       paths: paths,
       configs: configs,
       other: other) { |redirect_dest|
-      url = redirect_dest[:url] || send(redirect_dest[:route_name], protocol: redirect_dest[:protocol])
+      url = "#{request.protocol}#{redirect_dest[:url]}" || send(redirect_dest[:route_name])
 
       redirect_to(url, status: redirect_dest[:status])
     }
@@ -328,10 +327,8 @@ class ApplicationController < ActionController::Base
   def request_hash
     @request_hash ||= {
       host: request.host,
-      protocol: request.protocol,
       fullpath: request.fullpath,
       port_string: request.port_string,
-      headers: request.headers
     }
   end
 
