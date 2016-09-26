@@ -26,14 +26,38 @@ module TransactionService::Process
     def do_create(tx, gateway_fields)
       gateway_adapter = TransactionService::Transaction.gateway_adapter(tx[:payment_gateway])
 
-      completion = gateway_adapter.create_payment(
+      payment_res = gateway_adapter.create_payment(
         tx: tx,
         gateway_fields: gateway_fields,
-        force_sync: true)
+        force_sync: true)[:response]
 
-      Gateway.unwrap_completion(completion) do
+      booking_res =
+        if tx[:availability] == :booking
+          end_on = tx[:booking][:end_on]
+          end_adjusted = tx[:unit_type] == :day ? end_on + 1.days : end_on
+
+          payment_res.and_then {
+            HarmonyClient.post(
+              :initiate_booking,
+              body: {
+                marketplaceId: tx[:community_uuid],
+                refId: tx[:listing_uuid],
+                customerId: person_id_to_uuid(tx[:starter_id]),
+                initialStatus: :paid,
+                start: tx[:booking][:start_on],
+                end: end_adjusted
+              })
+          }
+        else
+          payment_res
+        end
+
+      booking_res.and_then {
         Transition.transition_to(tx[:id], :preauthorized)
-      end
+
+        # Return the payment_res. It contains the redirect_url.
+        payment_res
+      }
     end
 
     def reject(tx:, message:, sender_id:, gateway_adapter:)
@@ -110,6 +134,10 @@ module TransactionService::Process
 
     def use_async?(force_sync, gw_adapter)
       !force_sync && gw_adapter.allow_async?
+    end
+
+    def person_id_to_uuid(person_id)
+      UUIDTools::UUID.parse_raw(Base64.urlsafe_decode64(person_id))
     end
   end
 end
