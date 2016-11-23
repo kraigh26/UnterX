@@ -12,6 +12,8 @@ require 'jwt'
   "app/utils/service_client/client",
   "app/utils/service_client/middleware/middleware_base",
   "app/utils/service_client/middleware/jwt_authenticator",
+  "app/utils/service_client/authentication/token_creator",
+  "app/utils/service_client/authentication/harmony_token_creator",
 ].each { |file| require_relative "../../../../#{file}" }
 
 describe ServiceClient::Middleware::JwtAuthenticator do
@@ -29,9 +31,10 @@ describe ServiceClient::Middleware::JwtAuthenticator do
     end
   end
 
+  let(:harmony_token_creator) { ServiceClient::Authentication::HarmonyTokenCreator.new }
 
   it "encodes an authorization header" do
-    authenticator = ServiceClient::Middleware::JwtAuthenticator.new(disable: false, secret: SECRET)
+    authenticator = ServiceClient::Middleware::JwtAuthenticator.new(disable: false, token_creator: harmony_token_creator, secret: SECRET)
 
     m_id = UUIDUtils.create
     a_id = UUIDUtils.create
@@ -47,14 +50,14 @@ describe ServiceClient::Middleware::JwtAuthenticator do
   end
 
   it "fails with a missing auth context" do
-    authenticator = ServiceClient::Middleware::JwtAuthenticator.new(disable: false, secret: SECRET)
+    authenticator = ServiceClient::Middleware::JwtAuthenticator.new(disable: false, token_creator: harmony_token_creator, secret: SECRET)
 
     ctx = {req: {headers: {}}, opts: {}}
     expect { authenticator.enter(ctx) }.to raise_error(TypeError)
   end
 
   it "fails with an invalid missing auth context" do
-    authenticator = ServiceClient::Middleware::JwtAuthenticator.new(disable: false, secret: SECRET)
+    authenticator = ServiceClient::Middleware::JwtAuthenticator.new(disable: false, token_creator: harmony_token_creator, secret: SECRET)
 
     auth_context = {
       marketplace_id: 1,
@@ -76,7 +79,7 @@ describe ServiceClient::Middleware::JwtAuthenticator do
     }
 
     authenticator = ServiceClient::Middleware::JwtAuthenticator.new(
-      disable: false, secret: SECRET, default_auth_context: default_auth_context)
+      disable: false, token_creator: harmony_token_creator, secret: SECRET, default_auth_context: default_auth_context)
 
     ctx = authenticator.enter({req: {headers: {}},
                                opts: {}})
