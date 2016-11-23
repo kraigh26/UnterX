@@ -16,6 +16,27 @@ module ServiceClient
 
         JWTUtils.encode(payload, secret, exp: expires_at)
       end
+
+      def self.create_from_model(user: nil, community:, secret:, expires_at:)
+        role =
+          if user.nil?
+            nil
+          elsif user.has_admin_rights?
+            :admin
+          else
+            :user
+          end
+
+        self.new.create(
+          auth_context: {
+            marketplace_id: community.uuid_object,
+            actor_id: user&.uuid_object || UUIDUtils.v0_uuid,
+            actor_role: role
+          },
+          secret: secret,
+          expires_at: expires_at
+        )
+      end
     end
   end
 end

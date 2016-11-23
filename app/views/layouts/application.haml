@@ -3,7 +3,7 @@
 %body
 
   -# Initialize and hydrate shared Redux store
-  = redux_store("SharedReduxStore", props: @redux_store_data)
+  = redux_store("SharedReduxStore", props: @redux_store_data.deep_transform_keys { |key| key.to_s.camelize(:lower) })
 
   -# Render railsContext here before any react component gets rendered
   = prepend_render_rails_context("")

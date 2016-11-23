@@ -1,0 +1,5 @@
+const INITIALIZED = 'SHARED_REDUX_STORE::INITIALIZED'
+
+export default {
+  INITIALIZED
+}

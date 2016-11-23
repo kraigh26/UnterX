@@ -385,11 +385,37 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
   def initialize_redux_store_data
-    @redux_store_data = {}
+    harmony_auth_token_expires_in = 15.minutes
+    harmony_auth_token =
+      ServiceClient::Authentication::HarmonyTokenCreator.create_from_model(
+        user: @current_user,
+        community: @current_community,
+        secret: APP_CONFIG.harmony_api_token_secret,
+        expires_at: harmony_auth_token_expires_in.from_now)
+
+    @redux_store_data = {
+      harmony: {
+        # expires_in: harmony_auth_token_expires_in,
+        # auth_token: harmony_auth_token
+      }
+    }
   end
 
-  private
+  def create_harmony_auth_token(user:, community:)
+
+    harmony_auth_token = harmony_token_creator.create(
+      auth_context: {
+        marketplace_id: @current_community.uuid_object.to_s,
+        actor_id: @current_user&.uuid_object&.to_s || UUIDUtils.v0_uuid,
+        actor_role: role
+      },
+      secret: APP_CONFIG.harmony_api_token_secret,
+      expires_at: harmony_auth_token_expires_in.from_now
+    )
+  end
 
   # Override basic instrumentation and provide additional info for
   # lograge to consume. These are pulled and logged in environment
