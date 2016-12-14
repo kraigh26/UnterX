@@ -26,10 +26,11 @@ but tries to contain all the hackiness within itself.
 */
 import { Component, PropTypes } from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
-import r, { div, button } from 'r-dom';
+import r, { div, button, span } from 'r-dom';
 import Portal from '../Portal/Portal';
 import SideWinderTransition from './SideWinderTransition';
 import * as cssVariables from '../../../assets/styles/variables';
+import { t } from '../../../utils/i18n';
 
 import css from './SideWinder.css';
 import closeIcon from './images/close.svg';
@@ -155,6 +156,7 @@ class SideWinder extends Component {
                 className: css.closeButton,
                 dangerouslySetInnerHTML: { __html: closeIcon },
               }),
+              span({ className: css.closeHelpText }, t('web.sidewinder.close')),
             ]),
           ]) :
         null,

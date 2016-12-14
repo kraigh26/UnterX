@@ -49,6 +49,31 @@
   }
 }
 
+.closeHelpText {
+  position: absolute;
+  top: 0;
+
+  /* The 'Close' text will overlap with the button a bit (10px), so we
+  need to disable pointer events */
+  right: 50px;
+  pointer-events: none;
+
+  line-height: 60px;
+
+  color: #FFF;
+
+  opacity: 0;
+  will-change: opacity;
+
+  user-select: none;
+}
+
+.closeButton:focus + .closeHelpText,
+.closeButton:hover + .closeHelpText {
+  transition: opacity var(--SideWinder_animationDuration);
+  opacity: 1;
+}
+
 .closeButton {
   position: absolute;
   top: 0;
@@ -78,7 +103,9 @@
   &:focus {
     outline: none;
     background: none;
+  }
 
+  &:active {
     & svg g {
       stroke: #ddd;
     }
