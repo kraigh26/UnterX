@@ -52,19 +52,15 @@
 .closeHelpText {
   position: absolute;
   top: 0;
+  right: 50px;
 
   /* The 'Close' text will overlap with the button a bit (10px), so we
   need to disable pointer events */
-  right: 50px;
   pointer-events: none;
-
   line-height: 60px;
-
-  color: #FFF;
-
+  color: #fff;
   opacity: 0;
   will-change: opacity;
-
   user-select: none;
 }
 
