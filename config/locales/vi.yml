@@ -228,6 +228,7 @@ vi:
         last_community_updates: "Xin lưu ý rằng sau khi xóa, bạn và người dùng trên thị trường của bạn vẫn có thể nhận được email cập nhật thị trường cuối cùng."
         you_will_be_redirected_to: "Sau khi bạn đã xóa thị trường của mình, bạn sẽ được chuyển hướng đến %{destination}. Bạn sẽ không thể truy cập vào thị trường của bạn nữa."
         delete_this_marketplace: "Xóa thị trường này"
+        payment_preferences: ~
       manage_members:
         manage_members: "Điều hành người dùng"
         email: Email
@@ -315,7 +316,31 @@ vi:
           canceled: "Đã hủy"
           initiated: "Đang chờ thanh toán PayPal"
           pending_ext: "Đang chờ thanh toán PayPal"
-        not_available: "Không có sẵn"
+          none:
+            free: ~
+          paypal:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
+          stripe:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
+        not_available: "Lịch bận"
       paypal_account:
         paypal_admin_account: "Hệ thống thanh toán"
     custom_fields:
@@ -375,12 +400,25 @@ vi:
       new:
         send_email_to_members: ~
         send_email_to_members_title: ~
+        send_email: "Gửi tin nhắn"
+        send_email_or: ~
+        send_test_email: ~
+        test_sent: ~
+        send_email_article_title: ~
+        send_email_article_text: ~
+        recipients:
+          title: ~
+          options:
+            all_users: ~
+            with_listing: ~
+            with_listing_no_payment: ~
+            with_payment_no_listing: ~
+            no_listing_no_payment: ~
         email_subject: "Chủ đề"
         email_content: "Nội dung"
         email_content_placeholder: ~
         email_language: "Ngôn ngữ của người nhận thư"
         any_language: "Bất kỳ"
-        send_email: "Gửi tin nhắn"
         message_will_be_sent_only_to_people_with_this_language: ~
         email_sent: "Tin nhắn đã gửi."
     left_hand_navigation:
@@ -392,7 +430,7 @@ vi:
       preview: "Xem trước trang web"
     listing_shapes:
       availability_title: "Khả thi"
-      read_more: "Đọc thêm về quản lý tự động có sẵn."
+      read_more: "Đọc thêm về quản lý lịch làm việng tự động."
       read_more_availability_management: "Đọc thêm về quản lý có sẵn."
       allow_providers_to_manage_availability: "Cho phép các nhà cung cấp quản lý có sẵn từ lịch"
       per_day_availability: "lịch mỗi ngày"
@@ -485,6 +523,8 @@ vi:
       integration_info_text: "Hệ thống thanh toán của thị trường của bạn được cung cấp bởi PayPal. Để cho phép người dùng thanh toán bằng cách sử dụng thị trường của bạn, bạn phải kết nối tài khoản PayPal. Một khi bạn đã kết nối tài khoản PayPal, bạn có thể chọn một kích thước giao dịch tối thiểu và một khoản phí hoa hồng có thể có."
       link_paypal_personal_account_label: "Bạn có tự cung cấp sản phẩm hoặc dịch vụ không?"
       link_paypal_personal_account: "Nếu có, bạn cũng cần phải kết nối tài khoản PayPal của bạn với %{personal_payment_preferences_link}."
+      link_stripe_personal_account: ~
+      link_paypal_and_stripe_personal_account: ~
       personal_payment_preferences_link_text: "Tài khoản thị trường cá nhân của bạn"
       read_more_about_paypal: "Đọc thêm về hệ thống thanh toán"
       edit_payment_settings: "Chỉnh sửa cài đặt thanh toán"
@@ -497,6 +537,59 @@ vi:
       save_settings: "Lưu các thiết lập"
       minimum_listing_price_below_tx_fee: "Kích thước giao dịch tối thiểu phải lớn hơn hoặc bằng với phí giao dịch tối thiểu: %{minimum_transaction_fee}."
       minimum_listing_price_below_min: "Kích thước giao dịch tối thiểu phải lớn hơn hoa hồng tối thiểu %{minimum_commission}."
+    payment_preferences:
+      title: ~
+      general_settings: ~
+      connect_a_payment_provider: ~
+      contact_support: ~
+      no_payments_link_text: ~
+      your_country: ~
+      you_cannot_use_online_payments: ~
+      which_to_choose: ~
+      you_can_use_stripe_or_paypal: ~
+      you_can_use_stripe_only: ~
+      read_more_stripe: ~
+      you_can_use_paypal_only: ~
+      read_more_paypal: ~
+      read_more_about_paypal_and_stripe: ~
+      general_settings_updated: ~
+      transaction_fee_settings_updated: ~
+      choose_popup_text: ~
+      invalid_api_keys: ~
+      missing_api_keys: ~
+      stripe_verified: ~
+      change_settings: ~
+      configure_stripe: ~
+      configure_paypal: ~
+      transaction_fee_settings: ~
+      transaction_fee_save: ~
+      stripe_fee: ~
+      stripe_fee_notice: ~
+      fee_should_be_less_than_minimum_price: ~
+      stripe_connected:
+        title: ~
+      paypal_connected:
+        title: ~
+      stripe_form:
+        add_your_api_keys: ~
+        how_to_get_these: ~
+        publishable_key_example: ~
+        secret_key_example: ~
+        save_api_keys: ~
+        invalid_secret: ~
+        invalid_publishable: ~
+      index:
+        header: ~
+        info: ~
+        active: ~
+        gateway: ~
+        process: ~
+        commission: ~
+        minimum_price: ~
+        minimum_fee: ~
+        api_verified: ~
+        actions: ~
+        payments_not_enabled: ~
     transaction_types:
       sell: Bán
       rent: "cho thuê"
@@ -561,6 +654,12 @@ vi:
     username_or_email: "Tên người dùng hoặc email"
     what_is_this: "Đây là gì?"
     removed_user: "Đã loại bỏ người dùng"
+    payment_fee_info:
+      title: ~
+      title_paypal: ~
+      stripe: ~
+      paypal: ~
+      info: ~
     paypal_fee_info:
       title: "Phí xử lý thanh toán của PayPal"
       body_text: |-
@@ -570,14 +669,27 @@ vi:
           PayPal tính phí xử lý từ mỗi khoản thanh toán. Mức phí này là từ 2% đến 5% tổng giá bán (bao gồm cả vận chuyển), tùy thuộc vào doanh số hàng tháng của bạn và nước cư trú của người mua. Nói chung, mua hàng trong nước có mức phí thấp hơn của quốc tế và doanh thu hàng tháng cao hơn sẽ giúp bạn giảm giá.
           Bạn có thể xem lệ phí chính xác bằng cách đăng nhập vào tài khoản PayPal của bạn và đi tới %{link_to_paypal}. Sau mỗi lần mua, bạn sẽ nhận được biên lai hiển thị chính xác chi phí.
       link_to_paypal_text: đây
+    paypal_fee_info_new:
+      title: ~
+      body_text: ~
+      body_text_accept: ~
+      link_to_paypal_text: ~
+    paypal_only_fee_info:
+      title: ~
+      body_text: ~
+      link_to_paypal_text: ~
+    stripe_fee_info:
+      title: ~
+      body_text: ~
+      link_to_stripe_text: ~
   conversations:
     accept:
       details: "Chi tiết đơn đặt hàng"
-      order_by: "Sắp xếp theo %{orderer_link}"
+      order_by: "Đơn hàng bởi %{orderer_link}"
       accept_offer: "Chấp nhận đề nghị"
       accept_request: "Chấp nhận yêu cầu"
-      reject_offer: "Để lần sau vậy."
-      reject_request: "Để lần sau vậy."
+      reject_offer: "Để lần sau"
+      reject_request: "Để lần sau"
       close_listing: "Đóng  %{listing_title_link}"
       update_later: "Khoan đóng tin"
       optional_message: "Tin nhắn tùy ý"
@@ -590,8 +702,12 @@ vi:
       you_will_get_label: "Bạn sẽ nhận được:"
       total_label: "Tổng:"
       total_value: "%{seller_gets}*"
+      total_value_paypal: ~
+      total_value_stripe: ~
       paypal_fee_info: "* Không bao gồm <a id='%{fee_info_link_id}' href='#'> lệ phí thanh toán của PayPal </a>"
+      payment_fee_info: ~
       shipping_price_label: "Vận chuyển:"
+      stripe-fee_label: ~
     confirm:
       confirm_description: ~
       cancel_description: "Nếu đơn hàng của bạn chưa được hoàn thành, bạn có thể đánh dấu \"khiếu nại\" cho nó. Bạn vẫn có thể đánh giá bên còn lại và giải thích về chuyện đã xảy ra."
@@ -699,7 +815,7 @@ vi:
       waiting_for_listing_author_to_accept_request: "Đang chờ %{listing_author_name} chấp nhận yêu cầu này. Ngay khi %{listing_author_name} chấp nhận yêu cầu này, bạn sẽ bị tính phí."
       waiting_for_you_to_accept_request: "Đang đợi bạn chấp nhận yêu cầu"
       waiting_confirmation_from_requester: "Đang chờ %{requester_name} đánh dấu đơn hàng hoàn tất"
-      waiting_confirmation_from_you: ~
+      waiting_confirmation_from_you: "Đang chờ bạn xác nhận giao dịch đã hoàn tất"
       waiting_payment_from_requester: "Chờ %{requester_name} thanh toán"
       waiting_payment_from_you: "Đang chờ bạn trả tiền"
       waiting_feedback_from_you: "Đang đợi bạn gửi phản hồi"
@@ -837,6 +953,31 @@ vi:
       price_per_unit_type: "Giá mỗi: %{unit_type}"
       quantity: "Số lượng"
       you_have_received_new_payment: "Bạn đã được trả %{payment_sum} cho %{listing_title} bởi %{payer_full_name}. Đây là hóa đơn."
+    payment_receipt_to_seller:
+      payment_gateway_fee: ~
+      shipping_total: ~
+      product: ~
+      price_payer_paid: ~
+      service_fee: ~
+      you_will_get: ~
+      new_payment: ~
+      price_per_unit_type: ~
+      quantity: ~
+      you_have_received_new_payment: ~
+    payment_receipt_to_payer:
+      receipt_of_payment: ~
+      you_have_made_new_payment: ~
+      product: ~
+      price_per_unit_type: ~
+      duration: ~
+      quantity: ~
+      subtotal: ~
+      total: ~
+      price: ~
+      service_fee: ~
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
+      money_will_be_transferred: ~
     paypal_new_payment:
       paypal_gateway_fee: "Phí của PayPal:"
       shipping_total: "Vận chuyển:"
@@ -856,6 +997,8 @@ vi:
       total: "Tổng cộng"
       price: Giá
       service_fee: "Phí dịch vụ"
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
       money_will_be_transferred: "Số tiền này sẽ được chuyển đến %{recipient_name} khi a) bạn đã đánh dấu yêu cầu hoàn thành hoặc b) %{automatic_confirmation_days} ngày đã trôi qua kể từ khi bạn trả tiền."
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} đã gửi bạn thông tin phản hồi tại %{service_name}"
@@ -869,7 +1012,7 @@ vi:
       added_offer: "%{name_link} đã thêm hỗ trợ:"
       added_request: "%{name_link} đã thêm yêu cầu:"
       added_listing: "%{name_link} đã đăng một bài mới :"
-      update_mail_title: ~
+      update_mail_title: "Cập nhật từ %{title_link}"
       title_link_text: "%{community_name}"
       intro_paragraph: "Đây là một số sự kiện đã diễn ra trên %{community_link} trong %{time_since_last_update} qua."
       intro_paragraph_link_text: "%{community_name}"
@@ -886,12 +1029,13 @@ vi:
       reset_password_instructions: "<p>Bạn đã chỉ ra rằng bạn đã quên mật khẩu hoặc tên người dùng của bạn tại dịch vụ %{service_name}.</p><p>Tên người dùng của bạn là: %{username}</p><p>Nếu bạn cần phải đặt lại mật khẩu của bạn, nhấp vào liên kết sau đây: %{password_reset_link}</p><br><p>Nếu bạn không yêu cầu, xin vui lòng bỏ qua email này. Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập vào liên kết ở trên và tạo ra một mật khẩu mới.</p>"
     testimonial_reminder:
       remember_to_give_feedback_to: "Nhắc nhở: nhớ đưa ra thông tin phản hồi cho %{name}"
-      you_have_not_given_feedback_yet: "Bạn chưa đưa ra thông tin phản hồi cho %{name} về sự kiện '%{event}'. Hãy nhớ cung cấp thông tin phản hồi về việc làm thế nào %{given_name} được thực hiện trong sự kiện này."
+      you_have_not_given_feedback_yet: "Bạn chưa gửi đánh giá cho %{name} về sự kiện '%{event}'. Hãy nhớ đánh giá cách làm việc của %{given_name} trong sự kiện này."
     transaction_preauthorized:
       subject: ~
       transaction_requested_by_user: ~
       you_have_time_to_accept: "Bạn cần chấp nhận hoặc từ chối yêu cầu trong vòng %{payment_expires_in}. Nếu bạn chấp nhận trong khung thời gian này, thanh toán sẽ được thông qua. Nếu bạn không chấp nhận, yêu cầu sẽ tự động bị từ chối và bạn sẽ không được trả tiền."
       if_you_do_accept: "Nếu bạn chấp nhận yêu cầu trong khung thời gian này, bạn sẽ nhận được tiền ngay vào tài khoản của bạn."
+      if_you_do_accept_stripe: ~
       if_you_do_not_accept: "Nếu bạn từ chối yêu cầu hoặc không chấp nhận yêu cầu trong khung thời gian này, giao dịch sẽ tự động bị hủy, %{requester} sẽ không bị tính phí và bạn sẽ không được trả tiền."
       click_here_to_reply: "Nhấp vào đây để đáp ứng yêu cầu"
     transaction_preauthorized_reminder:
@@ -941,6 +1085,8 @@ vi:
       cancel_error: "Đã xảy ra lỗi khi hủy. Không thể hoàn tất huỷ bỏ."
       accept_authorization_error: "Đã xảy ra lỗi khi cố gắng chấp nhận thanh toán của Paypal. Vui lòng thử lại."
       reject_authorization_error: "Đã xảy ra lỗi khi cố từ chối thanh toán của Paypal. Vui lòng thử lại."
+    stripe:
+      generic_error: ~
   error_pages:
     back_to_kassi_front_page: "Quay lại %{service_name} đầu trang"
     error_404:
@@ -1066,7 +1212,7 @@ vi:
       no_listings_notification: "Không có sản phẩm nào. %{add_listing_link}"
       add_listing_link_text: "Đăng bài mới"
       open_listing: "bài đăng"
-      open_listings: "bài đăng"
+      open_listings: "bài đăng đang mở"
       private_listing_notification_log_in: ~
       is: là
       are: là
@@ -1259,8 +1405,8 @@ vi:
       offer_rejected: "Hỗ trợ bị từ chối."
       offer_canceled: "Đề nghị bị hủy."
       listing_updated_successfully: "Cập nhật thành công"
-      listing_updated_availability_management_enabled: "Danh sách cập nhật thành công. Quản lý có sẵn đã được bật."
-      listing_updated_availability_management_disabled: "Danh sách cập nhật thành công. Quản lý có sẵn đã được tắt"
+      listing_updated_availability_management_enabled: "Bài đăng cập nhật thành công. Quản lý lịch làm việc đã được bật."
+      listing_updated_availability_management_disabled: "Bài đăng cập nhật thành công. Quản lý lịch làm việc đã được tắt"
       only_kassi_administrators_can_access_this_area: "Chỉ những người quản trị viên %{service_name} có thể truy cập khu vực này"
       only_listing_author_can_close_a_listing: "Chỉ tác giả của danh sách mới có thể đóng danh sách"
       only_listing_author_can_edit_a_listing: "Chỉ tác giả của danh sách mới có thể chỉnh sửa danh sách"
@@ -1290,7 +1436,7 @@ vi:
       request_canceled: ~
       message_sent: "Đã gửi tin nhắn"
       message_not_sent: "Lỗi khi gửi tin nhắn. Vui lòng thử lại."
-      this_content_is_not_available_in_this_community: "Nội dung này là không có sẵn trong cộng đồng này."
+      this_content_is_not_available_in_this_community: "Nội dung này không tồn tại."
       unknown_error: "Lỗi không xác định. Xin vui lòng sử dụng liên kết phản hồi để gửi chi tiết những gì đã xảy ra."
       update_error: "Có lỗi xảy ra khi cố cập nhật thông tin của bạn, vui lòng thử lại"
       you_are_not_allowed_to_give_feedback_on_this_transaction: "Bạn không được phân quyền để đưa ra thông tin phản hồi về sự kiện này"
@@ -1337,6 +1483,8 @@ vi:
       notifications: "Các ghi chú"
       profile: "Thông tin hồ sơ"
       settings: "Cài đặt"
+      paypal_payments: ~
+      stripe_payments: ~
       payments: "Thanh toán"
   listings:
     bubble_listing_not_visible:
@@ -1433,7 +1581,11 @@ vi:
         long_time: "tuần, tháng, ..."
         after_service_fee_you_will_get: ~
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} sẽ được khấu trừ khỏi giá."
+        no_service_fee_you_will_get_payment_text: ~
+        after_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_paypal_text: "Khi ai đó làm đơn đặt hàng, %{service_name} lệ phí (%{sum_with_currency}) và %{paypal_fee_info_link} sẽ được khấu trừ khỏi giá."
+        after_service_fee_you_will_get_stripe_text: ~
+        payment_fee_info_link_text: ~
         paypal_fee_info_link_text: "Phí xử lý thanh toán của PayPal"
         delivery: "Phương thức vận chuyển:"
         shipping: "Vận chuyển:"
@@ -1519,7 +1671,7 @@ vi:
       booking_to: Tới
       how_paypal_works: "Cách hoạt động của PayPal"
       payment_help: "Trợ giúp thanh toán"
-      unable_load_availability: "Không thể tải thông tin có sẵn. Vui lòng thử lại sau."
+      unable_load_availability: "Không thể tải lịch làm việc. Vui lòng thử lại sau."
     new:
       listing: "sản phẩm"
       selected_category: "Danh mục : %{category}"
@@ -1608,6 +1760,17 @@ vi:
       invalid_parameters: "Các giá trị không hợp lệ cho giao dịch mới"
     transaction_agreement_checkbox:
       read_more: Xem.
+    stripe_payment:
+      payment: ~
+      pay_with_card: ~
+      address: ~
+      address_country: ~
+      address_name: ~
+      address_city: ~
+      address_state: ~
+      address_street1: ~
+      address_street2: ~
+      address_postal_code: ~
   mapview:
     index:
       all_categories: "Tất cả các chuyên mục"
@@ -1651,6 +1814,7 @@ vi:
     contact_admin_link_text: "Liên hệ với quản trị viên thị trường"
     you_are_ready_to_accept_payments: "Bạn đã sẵn sàng để chấp nhập thanh toán!"
     commission: "%{commission} %"
+    not_now: ~
     new:
       payout_info_you_need_to_connect: "Để chấp nhận thanh toán, bạn cần phải kết nối tài khoản PayPal với %{service_name}."
       payout_info_text: "Để kết nối tài khoản của bạn, hãy hoàn tất các bước sau."
@@ -1697,6 +1861,8 @@ vi:
     paypal_permission_granted_summary: "Cho phép cấp phí giao dịch"
   paypal:
     pay_with_paypal: "Tiến hành thanh toán"
+    checkout_with: ~
+    or_pay_with_paypal: ~
     checkout_with_paypal: "Thanh toán với Paypal"
     cancel_succesful: "Thanh toán PayPal đã bị hủy"
     transaction:
@@ -1773,12 +1939,12 @@ vi:
       listing: "Bài đăng"
       listings: "Bài đăng"
       open_listing: "Mở bài đăng"
-      open_listings: "Các bài đăng đang mở"
+      open_listings: "bài đăng đang mở"
       no_listings: "Ko có sản phẩm nào."
-      no_open_listings: "Hiện không có bài đăng nào đang mở."
+      no_open_listings: "Không có bài đăng nào đang mở."
       no_reviews: "Chưa có đánh giá"
       show_all_listings: "Hiện tất cả sản phẩm/dịch vụ đang bán"
-      show_all_open_listings: "Hiện tất cả các bài đang đăng"
+      show_all_open_listings: "Hiện tất cả các bài đăng đang mở"
       show_all_reviews: "Hiện tất cả phản hồi"
     followed_people:
       you_follow_plural: "Bạn theo dõi %{count} người"
@@ -2040,11 +2206,13 @@ vi:
       quantity: "Số lượng:"
       subtotal: "Tổng phụ:"
       shipping-price: "Vận chuyển:"
+      stripe-fee: ~
     price_per_quantity: "Giá mỗi %{unit_type}:"
     price: "Giá:"
     quantity: "Số lượng: %{quantity}"
     unit_price: "Đơn giá: %{unit_price}"
     total: "Tổng:"
+    total_to_pay: ~
   unit:
     day: ngày
     days: ngày
@@ -2061,7 +2229,7 @@ vi:
         night: đêm
         week: tuần
         month: tháng
-      edit_availability_header: "Có sẵn"
+      edit_availability_header: "Lịch làm việc"
       save_and_close_availability_editing: "Lưu và đóng"
       confirm_discarding_unsaved_availability_changes_explanation: "Bạn có các thay đổi chưa lưu cho thông tin về tính khả dụng của bạn. Nếu bạn tiến hành, những thay đổi này sẽ bị mất."
       confirm_discarding_unsaved_availability_changes_question: "Bạn có chắc chắn muốn hủy thay đổi của mình không?"
@@ -2102,9 +2270,6 @@ vi:
       person:
         zero: "Người dùng"
         other: "Người dùng"
-      listing_conversation:
-        zero: "Giao dịch"
-        other: "Giao dịch"
     previous_label: "&#8592; Trước"
     next_label: "Kế tiếp &#8594;"
     page_gap: "&ba chấm;"
@@ -2117,3 +2282,76 @@ vi:
         other: "Hiển thị <b>;%{count}</b> %{model}"
       multi_page: "Đang hiển thị %{model} %{from} - %{to} của tổng số %{count}"
       multi_page_html: "Đang hiển thi %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> của tổng số <b>%{count}</b>"
+  stripe_accounts:
+    admin_account_not_connected: ~
+    contact_admin_link_text: ~
+    you_are_ready_to_accept_payments: ~
+    commission: ~
+    pay_with_stripe: ~
+    add_and_pay: ~
+    card_not_stored: ~
+    missing_payment: ~
+    stripe_bank_connected: ~
+    stripe_can_accept: ~
+    stripe_credit_card: ~
+    paypal: ~
+    paypal_connected: ~
+    paypal_can_accept: ~
+    paypal_connected_give_permission: ~
+    form_new:
+      need_info: ~
+      select_country: ~
+      legal_name: ~
+      country: ~
+      birth_date: ~
+      ssn_last_4: ~
+      personal_id_number: ~
+      address_country: ~
+      address_state: ~
+      address_city: ~
+      address_postal_code: ~
+      address_line1: ~
+      tos_link: ~
+      tos_link_title: ~
+      save_details: ~
+      edit: ~
+      cancel: ~
+    form_bank:
+      bank_account_number: ~
+      bank_routing_number: ~
+      bank_routing_1: ~
+      bank_routing_2: ~
+      bank_currency: ~
+      messages:
+        account_number: ~
+        routing_number: ~
+        bank_code: ~
+        branch_code: ~
+        transit_number: ~
+        institution_number: ~
+        format_varies_by_bank: ~
+        bsb: ~
+        error_message: ~
+        clearing_code: ~
+        sort_code: ~
+        must_match: ~
+        a_dash: ~
+        digits: ~
+        digits_or_chars: ~
+    form_verification:
+      personal_id_number: ~
+      document: ~
+      send_verification: ~
+      need_verification: ~
+  payment_settings:
+    title: ~
+    bank_account: ~
+    paypal: ~
+    bank_account_details: ~
+    add_bank_details: ~
+    can_accept_stripe_and_paypal: ~
+    to_accept_paypal: ~
+    connect_paypal: ~
+    wrong_setup: ~
+    invalid_bank_account_number: ~
+    invalid_postal_code: ~

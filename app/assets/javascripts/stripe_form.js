@@ -21,7 +21,7 @@ window.ST.stripe_form_i18n = {
 
   var BANK_RULES = {
     AU: { 
-      account_number: { format: '12345678', regexp: '[0-9]{8}', test_regexp: '[0-9][9]'}, 
+      account_number: { format: 'format_varies_by_bank', regexp: '[0-9]{6,10}', test_regexp: '[0-9]{6,10}'}, 
       routing_number: { title: 'bsb',  format: '123456', regexp: '[0-9]{6}', test_regexp: '[0-9]{6}'} 
     },
     AT: { 
@@ -233,7 +233,7 @@ window.ST.stripe_form_i18n = {
         regexp = (rule[field] || {})['test_regexp']; 
       }
       var def_title = field == 'account_number' ? i18n_label(field, 'Account number') : field;
-      return i18n_label(title, def_title) + " "+i18n_label("must_match", "must match")+" \""+regexp+"\" ("+explain_regexp(regexp)+")";
+      return i18n_label(title, def_title) + " " + i18n_label("must_match", "must be in the following format:")+ " " + explain_regexp(regexp);
     }
   );
 })(window.ST);
