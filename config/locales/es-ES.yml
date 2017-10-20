@@ -346,8 +346,6 @@ es-ES:
             initiated: "Esperando el pago de Stripe"
             pending_ext: "Esperando el pago de Stripe"
         not_available: "No disponible"
-      paypal_account:
-        paypal_admin_account: "Sistema de pagos"
     custom_fields:
       edit:
         edit_listing_field: "Editar campo '%{field_name}'"
@@ -532,8 +530,8 @@ es-ES:
       integration_info_text: "El sistema de pagos de tu comunidad se basa en PayPal. Si quieres permitir a tus usuarios hacer pagos a través de tu comunidad, debes conectar tu cuenta de PayPal. Después de esto, puedes decidir el precio mínimo para las transacciones, así como la comisión y/o cuota por transacción que quieres recibir."
       link_paypal_personal_account_label: "Venderás productos u ofrecerás productos en tu comunidad?"
       link_paypal_personal_account: "Si es así, también necesitará conectar su cuenta PayPal en %{personal_payment_preferences_link}."
-      link_stripe_personal_account: ~
-      link_paypal_and_stripe_personal_account: ~
+      link_stripe_personal_account: "Si es así, también debes añadir tus detalles de pago en %{personal_payment_preferences_link}"
+      link_paypal_and_stripe_personal_account: "Si es así, también debes conectar tu cuenta de PayPal o Stripe en %{personal_payment_preferences_link}"
       personal_payment_preferences_link_text: "su cuenta personal de la comunidad"
       read_more_about_paypal: "Leer más sobre el sistema de pagos."
       edit_payment_settings: "Modificar la configuración de pagos"
@@ -666,23 +664,16 @@ es-ES:
     payment_fee_info:
       title: ~
       title_paypal: ~
-      stripe: ~
-      paypal: ~
+      stripe: Stripe
+      paypal: PayPal
       info: ~
     paypal_fee_info:
       title: "Comisión de procesamiento de pago de PayPal"
       body_text: |-
           PayPal cobra una tarifa de procesamiento de cada pago realizado. Esta tarifa está entre 2% y 5% del precio total de venta, dependiendo de su volumen mensual de ventas y del país de residencia del comprador. En general, las compras domésticas tienen tarifas más bajas que las internacionales, y las mayores ventas mensuales le dan un descuento en estas tarifas.
           Puedes ver las tarifas exactas accediendo a su cuenta de PayPal %{link_to_paypal}. Después de cada compra recibirá un recibo en el que se muestra la tarifa exacta.
-      body_with_shipping_text: |-
-          PayPal cobra una tarifa de procesamiento de cada pago realizado. Esta tarifa está entre 2% y 5% del precio total de venta (incluyendo envío), dependiendo de su volumen mensual de ventas y del país de residencia del comprador. En general, las compras domésticas tienen tarifas más bajas que las internacionales, y las mayores ventas mensuales le dan un descuento en estas tarifas.
-          Puedes ver las tarifas exactas accediendo a su cuenta de PayPal %{link_to_paypal}. Después de cada compra recibirá un recibo en el que se muestra la tarifa exacta.
-      link_to_paypal_text: aquí
-    paypal_fee_info_new:
-      title: ~
-      body_text: ~
       body_text_accept: ~
-      link_to_paypal_text: ~
+      link_to_paypal_text: aquí
     paypal_only_fee_info:
       title: ~
       body_text: ~
@@ -1097,7 +1088,7 @@ es-ES:
     stripe:
       generic_error: ~
   error_pages:
-    back_to_kassi_front_page: "Volver a la página principal de %{service_name}"
+    back_to_kassi_front_page: "Volver a la página principal"
     error_404:
       if_you_believe: "Si crees que la dirección es correcta y debería funcionar, entonces por favor ayúdanos a encontrar el error haciéndonos saber qué dirección ocasionó el error y qué debería aparecer en la página, a través del siguiente formulario."
       page_can_not_be_found: "Página no encontrada!"
